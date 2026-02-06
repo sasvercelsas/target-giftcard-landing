@@ -71,6 +71,15 @@ h1 span {
   box-shadow: 0 4px 14px rgba(204, 0, 0, 0.3);
 }
 
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+.cta-button {
+  animation: pulse 2s infinite;
+}
+
 .how-it-works {
   margin-top: 10px;
 }
