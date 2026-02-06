@@ -171,4 +171,18 @@ h1 span {
   .hero {
     padding-top: 35px;
   }
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+main {
+    flex: 1; /* This pushes the footer to the absolute bottom */
+}
+
+footer {
+    width: 100%;
+}
 }
