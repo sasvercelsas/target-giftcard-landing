@@ -61,42 +61,40 @@
     }
 
     .guide-wrapper {
-      /* Removed solid background to let the individual white steps stand out */
-      background-color: #f1f1f1; 
-      padding: 10px 12px;
-      border-top: 1px solid #eee;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
+  background-color: #f1f1f1; 
+  padding: 5px 12px; /* Tightened top padding */
+  border-top: 1px solid #eee;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
 
-    .quick-start {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between; /* Spreads cards to touch the button */
-      flex-grow: 1;
-    }
+.quick-start {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Stacks steps at the top instead of spreading them */
+  flex-grow: 1;
+}
 
-    .step-item { 
-      display: flex; 
-      align-items: center; 
-      background: #ffffff; /* This creates the "white section" */
-      border: 1px solid #e0e0e0;
-      border-radius: 12px;
-      padding: 12px;
-      margin-bottom: 8px; /* The "small margin" between steps */
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-    
-    .step-num { font-size: 24px; margin-right: 12px; flex-shrink: 0; }
-    .step-content strong { font-size: 0.95rem; display: block; color: #000; line-height: 1.1; }
-    .step-content p { font-size: 0.8rem; margin: 0; color: #555; line-height: 1.25; }
+.step-item { 
+  display: flex; 
+  align-items: center; 
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 6px; /* This is your "small gap" */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
 
-    /* Tightened the header to ensure visibility */
-    .quick-start h2 { 
-      text-align: center; margin: 0; padding: 5px 0; 
-      font-size: 0.9rem; color: #22c55e; 
-    }
+.quick-start h2 { 
+  text-align: center; 
+  margin: 0; 
+  padding: 8px 0; /* Minimal space for the header */
+  font-size: 0.9rem; 
+  color: #22c55e;
+  text-transform: uppercase;
+}
 
     .step-item { 
       display: flex; 
