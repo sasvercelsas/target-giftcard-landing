@@ -28,11 +28,8 @@
   margin-bottom: 115px; 
   display: flex;
   flex-direction: column;
-  min-height: 550px; /* Forces the white card to stay visible and tall */
-  overflow: hidden; /* Keep this hidden to keep corners rounded */
   display: flex;
   flex-direction: column;
-  min-height: 520px; /* Reduced slightly to ensure it fits the XR screen height */
   padding-bottom: 10px; /* ADD THIS: Gives the bottom step breathing room */
 }
 
@@ -66,9 +63,10 @@
 
     .guide-wrapper {
   background-color: #f1f1f1; 
-  padding: 10px 12px;
+  padding: 10px 12px 20px 12px; /* Extra bottom padding so the last step isn't cramped */
   border-top: 1px solid #eee;
-  flex: 1; /* This pushes the section to the bottom of the card */
+  border-bottom-left-radius: 20px; /* Restores the rounded corner */
+  border-bottom-right-radius: 20px; /* Restores the rounded corner */
   display: flex;
   flex-direction: column;
 }
@@ -84,11 +82,10 @@
   display: flex; 
   align-items: center; 
   background: #ffffff;
-  border: 1px solid #e8e8e8;
+  border: 1px solid #e0e0e0;
   border-radius: 12px;
-  padding: 12px;
-  margin-bottom: 6px; /* This is your "small gap" */
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  padding: 10px; /* Tightened padding */
+  margin-bottom: 6px; 
 }
 
 .quick-start h2 { 
