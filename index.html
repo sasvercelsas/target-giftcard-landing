@@ -93,6 +93,28 @@
     .step-content strong { display: block; font-size: 1rem; color: #000; margin-bottom: 4px; }
     .step-content p { margin: 0; font-size: 0.85rem; color: #666; line-height: 1.4; }
 
+   .guide-wrapper {
+  background-color: #f9f9f9; /* The light grey contrast */
+  margin: 20px -20px 0 -20px; /* Aligns with card edges */
+  padding: 30px 20px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  }
+   /* The Bold Heading */
+.step-content strong {
+  font-size: 1.15rem !important; /* Slightly bigger */
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* The Subtitle (The 'p' tag) */
+.step-content p {
+  font-size: 1.05rem !important; /* This makes the subtitle bigger */
+  line-height: 1.4;
+  color: #555; /* Slightly darker for better readability on grey */
+  margin: 0;
+}
+
     /* NOTIFICATION TOAST (Top Position) */
     #notification-toast {
       position: fixed; 
@@ -144,7 +166,8 @@
       <a href="prelander.html" class="cta-button">REQUEST MY TRANSACTION &rarr;</a>
     </section>
 
-    <section class="quick-start">
+   <div class="guide-wrapper"> 
+   <section class="quick-start">
       <h2>Quick Start Guide</h2>
 
       <div class="step-item">
@@ -180,6 +203,7 @@
       </div>
 
     </section>
+    </div>
   </main>
 
   <footer style="margin-top:20px; color: rgba(0,0,0,0.4); font-size: 0.75rem; text-align: center;">
