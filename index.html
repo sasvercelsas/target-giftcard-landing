@@ -2,206 +2,223 @@
 <html lang="en">
 <head>
  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💵</text></svg>">
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <title>Claim Your $750 Cash Gift Card</title>
+  <title>Cash App Reward Portal</title>
   
   <style>
-    /* 1. RESET FOR MOBILE */
-    * {
-      box-sizing: border-box; /* Prevents padding from adding to width */
-    }
-
+    * { box-sizing: border-box; }
+    
     body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      background-color: #0a0a0a;
-      color: #ffffff;
+      display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+      min-height: 100vh; margin: 0; padding: 20px 10px; width: 100%;
+      /* THEME: Green Background */
+      background-color: #22c55e; 
+      color: #333;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      overflow-x: hidden; /* Hard stop for horizontal scrolling */
+      overflow-x: hidden;
     }
 
-    main {
-      width: 100%;
-      max-width: 500px; /* Slimmed down for better US mobile display */
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 15px; /* Side breathing room for mobile */
+    /* MAIN CARD: White on Green */
+    main { 
+      width: 100%; 
+      max-width: 500px; 
+      background-color: #ffffff; 
+      border-radius: 20px; 
+      padding: 0 0 25px 0; /* Padding bottom only, top is handled by progress bar */
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      overflow: hidden; /* Keeps progress bar inside corners */
+      position: relative;
+      margin-top: 60px; /* Space for the top notification */
     }
 
-    /* 2. RESPONSIVE TEXT */
-    h1 {
-      font-size: 1.5rem;
-      line-height: 1.3;
-      text-align: center;
-      margin: 10px 0 20px 0;
+    /* PROGRESS BAR: Fixed at top of card */
+    .progress-container {
+      width: 100%; 
+      background-color: #f0f0f0; 
+      height: 12px;
+    }
+    .progress-fill {
+      width: 25%; /* 1/4 Completed */
+      height: 100%; 
+      background: linear-gradient(90deg, #16a34a, #22c55e);
+      border-radius: 0 4px 4px 0;
+    }
+    .progress-text {
+      text-align: right; font-size: 0.65rem; color: #666; padding: 4px 10px 0 0;
     }
 
-    .timer-container {
-      background: #1a1a1a;
-      border: 1px solid #22c55e;
-      padding: 8px 15px;
-      border-radius: 50px;
-      margin-bottom: 20px;
-      font-weight: bold;
-      color: #22c55e;
-      font-size: 0.9rem;
-    }
+    .hero { padding: 20px 20px 10px 20px; text-align: center; }
 
+    h1 { margin: 10px 0; font-size: 1.6rem; letter-spacing: -0.5px; }
     h1 span { color: #22c55e; }
 
-    /* 3. FULL-WIDTH BUTTON FOR THUMB TAPS */
+    /* BUTTON: REQUEST MY TRANSACTION */
     .cta-button {
-      display: block;
-      width: 100%; /* Makes it easier to hit on mobile */
-      text-align: center;
-      text-decoration: none;
-      background-color: #22c55e;
-      color: #000;
-      padding: 20px;
-      border-radius: 12px;
-      font-weight: 800;
-      font-size: 1.3rem;
-      margin: 10px 0;
-      cursor: pointer;
+      display: block; width: 100%; background-color: #22c55e; color: #fff;
+      padding: 20px; border-radius: 12px; font-weight: 900; font-size: 1.3rem;
+      text-decoration: none; margin-top: 15px; 
+      box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+      transition: transform 0.1s;
     }
+    .cta-button:active { transform: scale(0.98); }
 
-    /* 4. FLEXIBLE CARDS */
-    .steps-card { 
-      background-color: #111; 
-      border: 1px solid #333; 
-      border-radius: 15px; 
-      padding: 15px; 
-      width: 100%; 
+    /* STEPS SECTION */
+    .quick-start { padding: 0 20px; }
+    .quick-start h2 { text-align: center; font-size: 1.1rem; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+
+    .step-item {
+      display: flex; align-items: flex-start; margin-bottom: 20px;
+      border-bottom: 1px solid #f0f0f0; padding-bottom: 15px;
     }
-
-    .step {
-      display: flex;
-      align-items: flex-start; /* Aligns icon to top of text */
-      padding: 10px 0;
+    .step-item:last-child { border-bottom: none; }
+    
+    .step-num {
+      background: #22c55e; color: white; width: 28px; height: 28px;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-weight: bold; font-size: 0.9rem; margin-right: 15px; flex-shrink: 0; margin-top: 2px;
     }
+    
+    .step-content strong { display: block; font-size: 1rem; color: #000; margin-bottom: 4px; }
+    .step-content p { margin: 0; font-size: 0.85rem; color: #666; line-height: 1.4; }
 
-    .step-text strong { color: #22c55e; display: block; font-size: 1rem; }
-    .step-text p { color: #888; margin: 4px 0 0 0; font-size: 0.85rem; line-height: 1.4; }
-    .step-divider { height: 1px; background-color: #333; margin: 10px 0; }
-
-    /* POPUP STYLING (Mobile Friendly) */
+    /* NOTIFICATION TOAST (Top Position) */
     #notification-toast {
-      position: fixed;
-      bottom: 15px;
-      left: 15px;
-      right: 15px; /* Added right to center it on very small screens */
-      background: #1a1a1a;
-      border: 1px solid #22c55e;
-      color: white;
-      padding: 12px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.8);
-      transform: translateY(200%);
-      transition: transform 0.5s ease-in-out;
+      position: fixed; 
+      top: 10px; /* Top of screen */
+      left: 50%;
+      transform: translateX(-50%) translateY(-150%); /* Start hidden above */
+      width: 90%;
+      max-width: 400px;
+      background: #ffffff; 
+      border-left: 5px solid #22c55e; 
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+      border-radius: 8px; 
+      padding: 12px; 
+      display: flex; align-items: center;
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       z-index: 9999;
     }
-    #notification-toast.show { transform: translateY(0); }
+    #notification-toast.show { transform: translateX(-50%) translateY(0); }
     
-    footer { 
-      padding: 30px 15px; 
-      text-align: center; 
-      border-top: 1px solid #333; 
-      color: #888; 
-      font-size: 0.75rem; 
-      width: 100%; 
-    }
+    .toast-icon { font-size: 24px; margin-right: 12px; }
+    .toast-content { font-size: 0.8rem; color: #333; }
+    .toast-bold { font-weight: bold; color: #000; }
+    .toast-green { color: #22c55e; font-weight: 800; }
+    .toast-time { display: block; font-size: 0.7rem; color: #999; margin-top: 2px; }
   </style>
 </head>
 <body>
 
-  <main>
-    <div class="timer-container">
-      OFFER EXPIRES IN: <span id="countdown">04:59</span>
-    </div>
-
-    <section class="hero" style="width: 100%;">
-      <div class="logo">
-        <div style="width: 70px; height: 70px; border: 3px solid #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
-          <span style="color: #22c55e; font-size: 40px; font-weight: 900;">$</span>
-        </div>
+  <div id="notification-toast">
+    <div class="toast-icon">💸</div>
+    <div class="toast-content" id="toast-text">
       </div>
-      <h1>Complete the steps below to claim your <span>$750 Cash</span> giftcard!</h1>
-      <a href="prelander.html" class="cta-button" id="main-cta">START NOW &rarr;</a>
+  </div>
+
+  <main>
+    <div class="progress-container">
+      <div class="progress-fill"></div>
+    </div>
+    <div class="progress-text">Progress: 25% Completed</div>
+
+    <section class="hero">
+      <div style="width: 70px; height: 70px; background:#f0fdf4; border: 3px solid #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+        <span style="color: #22c55e; font-size: 40px; font-weight: 900;">$</span>
+      </div>
+      
+      <h1>Claim Your <span style="color:#22c55e;">Cash Transaction</span></h1>
+      <p style="color:#666; font-size: 0.95rem; margin-top: 5px;">Follow the steps below to verify & withdraw.</p>
+
+      <a href="prelander.html" class="cta-button">REQUEST MY TRANSACTION &rarr;</a>
     </section>
 
-    <section class="how-it-works" style="width: 100%; margin-top: 20px;">
-      <div class="steps-card">
-        <div class="step">
-          <div style="font-size:24px; margin-right:15px;">📱</div>
-          <div class="step-text"><strong>Complete 3-5 Featured Deals</strong><p>Choose from top apps or games.</p></div>
-        </div>
-        <div class="step-divider"></div>
-        <div class="step">
-          <div style="font-size:24px; margin-right:15px;">⏱️</div>
-          <div class="step-text"><strong>Takes 10-15 Minutes</strong><p>Fast-track verification for rewards.</p></div>
-        </div>
-        <div class="step-divider"></div>
-        <div class="step">
-          <div style="font-size:24px; margin-right:15px;">💰</div>
-          <div class="step-text"><strong>Get Up To $750</strong><p>Sent via email upon completion.</p></div>
+    <section class="quick-start">
+      <h2>Quick Start Guide</h2>
+
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <strong>Click on REQUEST MY TRANSACTION</strong>
+          <p>Generates your unique tracking ID to ensure you get paid.</p>
         </div>
       </div>
+
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <strong>Set Up Your Profile</strong>
+          <p>Link your Cash App tag or email so we know where to send funds.</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <strong>Complete at least 2-5 recommended deals</strong>
+          <p>Install apps or play games to verify your session (Required).</p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <strong>Claim your transaction and repeat</strong>
+          <p>Funds land in &lt;10 mins. There is no limit on daily claims.</p>
+        </div>
+      </div>
+
     </section>
   </main>
 
-  <div id="notification-toast">
-    <div style="font-size: 24px; margin-right: 12px;">✅</div>
-    <div style="font-size: 0.8rem;">
-      <span style="font-weight:bold; color:#22c55e;" id="p-name">Sarah M.</span> from <span id="p-state">California</span><br>
-      just claimed their <b>$750 Gift Card!</b>
-    </div>
-  </div>
-
-  <footer>
-    <p>&copy; 2026 RewardsHubs. All Rights Reserved.</p>
-    <p style="opacity:0.5; font-size: 0.65rem;">Disclaimer: This site is not endorsed by TikTok Inc.</p>
+  <footer style="margin-top:20px; color: rgba(0,0,0,0.4); font-size: 0.75rem; text-align: center;">
+    &copy; 2026 RewardsHubs. Not affiliated with TikTok or Cash App.
   </footer>
 
   <script>
-    // Timer & Popup logic remains same as before...
-    function startTimer(duration, display) {
-      var timer = duration, minutes, seconds;
-      setInterval(function () {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
-        display.textContent = (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
-        if (--timer < 0) { timer = duration; }
-      }, 1000);
-    }
+    // DATA ARRAYS
+    const users = ["@tiktok_queen", "@money_moves88", "@jason_builds", "@sarah_hustles", "@cash_king_01", "@beccas_finds", "@crypto_dave", "@daily_deals_usa"];
     
-    const names = ["James", "Emma", "Michael", "Sophia", "Robert", "Isabella", "David", "Mia", "William", "Olivia"];
-    const states = ["NY", "CA", "TX", "FL", "IL", "GA", "OH", "MI", "AZ"];
-
-    function showPopups() {
-      const toast = document.getElementById('notification-toast');
-      setInterval(() => {
-        document.getElementById('p-name').innerText = names[Math.floor(Math.random()*names.length)] + " " + String.fromCharCode(65+Math.floor(Math.random()*26)) + ".";
-        document.getElementById('p-state').innerText = states[Math.floor(Math.random()*states.length)];
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 4000);
-      }, 12000);
+    // Logic: Random function to generate natural looking numbers
+    function getRandomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    window.onload = function () {
-      startTimer(299, document.querySelector('#countdown'));
-      showPopups();
+    function showToast() {
+      const toast = document.getElementById('notification-toast');
+      const textContainer = document.getElementById('toast-text');
+
+      // 1. Generate Random Data
+      const user = users[Math.floor(Math.random() * users.length)];
+      const amount = getRandomInt(50, 750); // $50 - $750
+      const hours = getRandomInt(1, 5); // 1 - 5 hours
+      const minutesAgo = getRandomInt(1, 14); // 1 - 14 minutes ago
+
+      // 2. Build HTML String
+      textContainer.innerHTML = `
+        <span class="toast-bold">${user}</span> received 
+        <span class="toast-green">$${amount}</span> on Cash App after 
+        ${hours} hour${hours > 1 ? 's' : ''} of deal completions.
+        <span class="toast-time">${minutesAgo} minutes ago</span>
+      `;
+
+      // 3. Show Toast
+      toast.classList.add('show');
+
+      // 4. Hide after 4.5 seconds
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 4500);
+    }
+
+    // Start Loop
+    window.onload = function() {
+      // Show first one after 2 seconds
+      setTimeout(() => {
+        showToast();
+        // Repeat every 8-12 seconds
+        setInterval(showToast, 9000); 
+      }, 2000);
     };
   </script>
 </body>
