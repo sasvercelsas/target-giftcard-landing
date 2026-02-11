@@ -29,7 +29,11 @@
   display: flex;
   flex-direction: column;
   min-height: 550px; /* Forces the white card to stay visible and tall */
-  overflow: hidden;
+  overflow: hidden; /* Keep this hidden to keep corners rounded */
+  display: flex;
+  flex-direction: column;
+  min-height: 520px; /* Reduced slightly to ensure it fits the XR screen height */
+  padding-bottom: 10px; /* ADD THIS: Gives the bottom step breathing room */
 }
 
     .progress-container {
@@ -39,6 +43,7 @@
       margin: 25px auto 2px;
       border-radius: 10px;
       border: 1.5px solid #000;
+      flex-shrink: 0;
       overflow: hidden;
     }
     .progress-fill {
