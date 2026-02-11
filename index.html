@@ -10,13 +10,13 @@
     * { box-sizing: border-box; }
     
     body {
-      display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
-      min-height: 100vh; margin: 0; padding: 0 10px; width: 100%;
+      display: flex; flex-direction: column; align-items: center;
+      height: 100vh; /* Lock height to screen */
+      margin: 0; padding: 0 10px; width: 100%;
       background-color: #22c55e; 
       color: #333;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      overflow-x: hidden;
-      padding-bottom: 110px; /* Space so the fixed button doesn't hide the footer */
+      overflow: hidden; /* Prevent any scrolling */
     }
 
     main { 
@@ -24,21 +24,20 @@
       max-width: 500px; 
       background-color: #ffffff; 
       border-radius: 20px; 
-      padding: 0; 
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      position: relative;
-      margin-top: 65px; /* Clearance for the toast notification */
-      /* Stretch to fill the screen but let it grow if needed */
-      min-height: 620px; 
+      margin-top: 70px; /* Space for Toast */
+      margin-bottom: 105px; /* Exact space reserved for the Button at the bottom */
+      flex-grow: 1; /* Stretch to fill the middle */
       display: flex;
       flex-direction: column;
+      overflow: hidden;
     }
 
     .progress-container {
       width: 94%;
       background-color: #eee; 
       height: 10px;
-      margin: 18px auto 2px;
+      margin: 15px auto 2px;
       border-radius: 10px;
       border: 1.5px solid #000;
       overflow: hidden;
@@ -49,17 +48,57 @@
       background: linear-gradient(90deg, #16a34a, #22c55e);
     }
     .progress-text {
-      text-align: center; font-size: 0.7rem; color: #666; font-weight: bold; margin-bottom: 4px;
+      text-align: center; font-size: 0.7rem; color: #666; font-weight: bold; margin-bottom: 2px;
     }
 
-    .hero { padding: 5px 20px 8px 20px; text-align: center; }
-    h1 { margin: 2px 0; font-size: 1.4rem; letter-spacing: -0.5px; line-height: 1.1; }
+    .hero { padding: 5px 20px; text-align: center; }
+    h1 { margin: 2px 0; font-size: 1.35rem; letter-spacing: -0.5px; line-height: 1.1; }
 
     .hero-icon {
-      width: 45px; height: 45px;
+      width: 40px; height: 40px;
       background:#f0fdf4; border: 2px solid #22c55e; border-radius: 50%; 
       display: flex; align-items: center; justify-content: center; margin: 0 auto 5px;
     }
+
+    .guide-wrapper {
+      background-color: #f9f9f9;
+      padding: 0 12px;
+      border-top: 1px solid #eee;
+      flex-grow: 1; /* Stretch grey area to fill card */
+      display: flex;
+      flex-direction: column;
+    }
+
+    .quick-start {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly; /* PUSHES STEPS APART TO FILL ALL DEAD SPACE */
+      flex-grow: 1;
+    }
+
+    .quick-start h2 { 
+      text-align: center; 
+      margin: 0; 
+      padding: 10px 0; 
+      font-size: 1rem; 
+      color: #22c55e;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .step-item { 
+      display: flex; 
+      align-items: center; 
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+    
+    .step-num { font-size: 24px; margin-right: 12px; flex-shrink: 0; }
+    .step-content strong { font-size: 0.95rem; display: block; color: #000; margin-bottom: 2px; line-height: 1.1; }
+    .step-content p { font-size: 0.8rem; margin: 0; color: #555; line-height: 1.25; }
 
     .cta-button {
       position: fixed;
@@ -87,50 +126,6 @@
       100% { transform: translateX(-50%) scale(1); }
     }
 
-    .guide-wrapper {
-      background-color: #f9f9f9;
-      padding: 0 12px 15px 12px;
-      border-top: 1px solid #eee;
-      flex-grow: 1; /* This makes the grey section fill the remaining white card space */
-      display: flex;
-      flex-direction: column;
-      border-bottom-left-radius: 20px;
-      border-bottom-right-radius: 20px;
-    }
-
-    .quick-start {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between; /* Spreads steps out to fill dead space */
-      height: 100%;
-      flex-grow: 1;
-    }
-
-    .quick-start h2 { 
-      text-align: center; 
-      margin: 0; 
-      padding: 15px 0 10px 0; 
-      font-size: 1.1rem; 
-      color: #22c55e;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .step-item { 
-      display: flex; 
-      align-items: center; 
-      background: #ffffff;
-      border: 1px solid #e0e0e0;
-      border-radius: 12px;
-      padding: 14px;
-      margin-bottom: 10px;
-    }
-    
-    .step-num { font-size: 26px; margin-right: 12px; flex-shrink: 0; }
-    
-    .step-content strong { font-size: 0.95rem !important; display: block; color: #000; margin-bottom: 2px; line-height: 1.1; }
-    .step-content p { font-size: 0.85rem !important; margin: 0; color: #555; line-height: 1.3; }
-
     #notification-toast {
       position: fixed; top: 10px; left: 50%; transform: translateX(-50%) translateY(-150%);
       width: 92%; max-width: 400px; background: #ffffff; 
@@ -139,17 +134,14 @@
       transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 10000;
     }
     #notification-toast.show { transform: translateX(-50%) translateY(0); }
-    .toast-icon { font-size: 22px; margin-right: 12px; }
     .toast-content { font-size: 0.75rem; color: #333; }
-    .toast-bold { font-weight: bold; }
     .toast-green { color: #22c55e; font-weight: 800; }
-    .toast-time { display: block; font-size: 0.65rem; color: #999; }
   </style>
 </head>
 <body>
 
   <div id="notification-toast">
-    <div class="toast-icon">💸</div>
+    <div style="font-size: 22px; margin-right: 12px;">💸</div>
     <div class="toast-content" id="toast-text"></div>
   </div>
 
@@ -158,20 +150,18 @@
       <div class="progress-fill"></div>
     </div>
     <div class="progress-text">
-      Progress: <span style="font-size: 1.1rem; font-weight: 900; color: #16a34a;">25%</span> Completed
+      Progress: <span style="color: #16a34a; font-weight: 900;">25%</span> Completed
     </div>
 
     <section class="hero">
-      <div class="hero-icon">
-        <span style="color: #22c55e; font-size: 26px; font-weight: 900;">$</span>
-      </div>
+      <div class="hero-icon"><span style="color: #22c55e; font-size: 24px; font-weight: 900;">$</span></div>
       <h1>Claim Your <span style="color:#22c55e;">Cash Transaction</span></h1>
       <p style="color:#666; font-size: 0.85rem; margin-top: 2px;">Follow the steps below to verify & withdraw.</p>
     </section>
 
     <div class="guide-wrapper"> 
       <section class="quick-start">
-        <h2><span style="color:#22c55e;">Quick Start Guide</span></h2>
+        <h2>Quick Start Guide</h2>
 
         <div class="step-item">
           <div class="step-num">💸</div>
@@ -210,10 +200,6 @@
 
   <a href="prelander.html" class="cta-button">REQUEST MY TRANSACTION &rarr;</a>
 
-  <footer style="margin: 15px 0; color: rgba(255,255,255,0.6); font-size: 0.7rem; text-align: center;">
-    &copy; 2026 RewardsHubs. Not affiliated with TikTok or Cash App.
-  </footer>
-
   <script>
     const users = ["@tiktok_queen", "@money_moves88", "@jason_builds", "@sarah_hustles", "@cash_king_01", "@beccas_finds", "@crypto_dave", "@daily_deals_usa"];
     function getRandomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
@@ -227,10 +213,10 @@
       const minutesAgo = getRandomInt(1, 14);
 
       textContainer.innerHTML = `
-        <span class="toast-bold">${user}</span> received 
+        <strong>${user}</strong> received 
         <span class="toast-green">$${amount}</span> on Cash App after 
         ${hours} hour${hours > 1 ? 's' : ''} of deal completions.
-        <span class="toast-time">${minutesAgo} minutes ago</span>
+        <br><span style="font-size: 0.65rem; color: #999;">${minutesAgo} minutes ago</span>
       `;
       toast.classList.add('show');
       setTimeout(() => { toast.classList.remove('show'); }, 4500);
