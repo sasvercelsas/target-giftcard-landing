@@ -28,8 +28,8 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       overflow: hidden; 
       position: relative;
-      margin-top: 35px; 
-      /* ELONGATED BY A FIFTH: Increased from 500px to 600px */
+      /* PUSHED DOWN to clear the notification toast */
+      margin-top: 75px; 
       min-height: 600px; 
       display: flex;
       flex-direction: column;
@@ -93,7 +93,7 @@
       margin-top: 5px;
       padding: 0 12px 20px 12px;
       border-top: 1px solid #eee;
-      flex-grow: 1; /* Ensures the grey area fills the extra elongated space */
+      flex-grow: 1;
     }
 
     .quick-start h2 { 
@@ -161,7 +161,7 @@
 
     <div class="guide-wrapper"> 
       <section class="quick-start">
-        <h2>Quick Start Guide</h2>
+        <h2><span style="color:#22c55e;">Quick Start Guide</span></h2>
 
         <div class="step-item">
           <div class="step-num">💸</div>
@@ -183,7 +183,7 @@
           <div class="step-num">💼</div>
           <div class="step-content">
             <strong>Complete at least TWO to FIVE of the suggested deals (Required)</strong>
-            <p>(Most people get <span style="color: #22c55e;">$120</span> with just <span style="color: #22c55e;">3</span> deals!)</p>
+            <p>(Most people get at least <span style="color: #22c55e;">$120</span> in cashable payouts with just <span style="color: #22c55e;">3</span> deals!)</p>
           </div>
         </div>
 
@@ -191,7 +191,7 @@
           <div class="step-num">⏱️</div>
           <div class="step-content">
             <strong>Claim your transaction and repeat as many times as you want!</strong>
-            <p>(Fun fact: <span style="color: #22c55e;">65%</span> of earners quit their jobs!)</p>
+            <p>(Fun fact: <span style="color: #22c55e;">65%</span> of our daily highest-earning members usually quit their jobs by their first month completing deals everyday!)</p>
           </div>
         </div>
       </section>
@@ -219,8 +219,8 @@
       textContainer.innerHTML = `
         <span class="toast-bold">${user}</span> received 
         <span class="toast-green">$${amount}</span> on Cash App after 
-        ${hours}h completion.
-        <span class="toast-time">${minutesAgo}m ago</span>
+        ${hours} hour${hours > 1 ? 's' : ''} of deal completions.
+        <span class="toast-time">${minutesAgo} minutes ago</span>
       `;
       toast.classList.add('show');
       setTimeout(() => { toast.classList.remove('show'); }, 4500);
