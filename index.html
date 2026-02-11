@@ -28,15 +28,18 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       overflow: hidden; 
       position: relative;
-      margin-top: 40px; 
-      min-height: 500px; 
+      margin-top: 35px; 
+      /* ELONGATED BY A FIFTH: Increased from 500px to 600px */
+      min-height: 600px; 
+      display: flex;
+      flex-direction: column;
     }
 
     .progress-container {
       width: 94%;
       background-color: #eee; 
       height: 12px;
-      margin: 20px auto 4px; /* Slightly tighter top margin */
+      margin: 20px auto 4px;
       border-radius: 10px;
       border: 1.5px solid #000;
       overflow: hidden;
@@ -50,7 +53,7 @@
       text-align: center; font-size: 0.75rem; color: #666; font-weight: bold; margin-bottom: 6px;
     }
 
-    .hero { padding: 5px 20px 0px 20px; text-align: center; } /* Reduced bottom padding to 0 */
+    .hero { padding: 5px 20px 5px 20px; text-align: center; }
     h1 { margin: 2px 0; font-size: 1.4rem; letter-spacing: -0.5px; line-height: 1.1; }
 
     .hero-icon {
@@ -87,15 +90,16 @@
 
     .guide-wrapper {
       background-color: #f9f9f9;
-      margin-top: 5px; /* Pulls the grey section up */
-      padding: 0 12px 10px 12px; /* Removed top padding */
+      margin-top: 5px;
+      padding: 0 12px 20px 12px;
       border-top: 1px solid #eee;
+      flex-grow: 1; /* Ensures the grey area fills the extra elongated space */
     }
 
     .quick-start h2 { 
       text-align: center; 
       margin: 0; 
-      padding: 12px 0; /* Tightened padding */
+      padding: 15px 0; 
       font-size: 1.1rem; 
       color: #22c55e;
       text-transform: uppercase;
@@ -105,11 +109,11 @@
     .step-item { 
       display: flex; 
       align-items: center; 
-      margin-bottom: 8px; 
+      margin-bottom: 12px; 
       background: #ffffff;
       border: 1px solid #e0e0e0;
       border-radius: 12px;
-      padding: 10px;
+      padding: 12px;
     }
     
     .step-num { font-size: 26px; margin-right: 12px; flex-shrink: 0; }
