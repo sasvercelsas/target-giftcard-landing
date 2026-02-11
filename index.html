@@ -11,129 +11,89 @@
     
     body {
       display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
-      min-height: 100vh; margin: 0; padding: 20px 10px; width: 100%;
-      /* THEME: Green Background */
+      min-height: 100vh; margin: 0; padding: 15px 10px; width: 100%;
       background-color: #22c55e; 
       color: #333;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       overflow-x: hidden;
     }
 
-    /* MAIN CARD: White on Green */
     main { 
       width: 100%; 
       max-width: 500px; 
       background-color: #ffffff; 
       border-radius: 20px; 
-      padding: 0 0 25px 0; /* Padding bottom only, top is handled by progress bar */
+      padding: 0 0 20px 0; 
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      overflow: hidden; /* Keeps progress bar inside corners */
+      overflow: hidden; 
       position: relative;
-      margin-top: 60px; /* Space for the top notification */
+      margin-top: 65px; /* Space for Top Notification on XR */
     }
 
-    /* PROGRESS BAR: Fixed at top of card */
-    /* NEW: Progress bar is now detached and has a border to pop */
     .progress-container {
-      width: 90%;             /* Narrower so it doesn't touch the sides */
-      background-color: #eee; /* Light gray "empty" track */
-      height: 14px;           /* Slightly thicker */
-      margin: 15px auto 5px;  /* 15px down from the top, centered */
-      border-radius: 10px;    /* Rounded ends */
-      border: 2px solid #000; /* Black border makes it pop against green or white */
-      overflow: hidden;       /* Keeps the fill inside the rounded corners */
+      width: 90%;
+      background-color: #eee; 
+      height: 14px;
+      margin: 15px auto 5px;
+      border-radius: 10px;
+      border: 2px solid #000;
+      overflow: hidden;
     }
     .progress-fill {
-      width: 25%; /* 1/4 Completed */
+      width: 25%;
       height: 100%; 
       background: linear-gradient(90deg, #16a34a, #22c55e);
       border-radius: 0 4px 4px 0;
     }
     .progress-text {
-      text-align: right; font-size: 0.65rem; color: #666; padding: 4px 10px 0 0;
+      text-align: center; font-size: 0.7rem; color: #666; font-weight: bold; margin-bottom: 5px;
     }
 
-    .hero { padding: 20px 20px 10px 20px; text-align: center; }
+    .hero { padding: 15px 20px 5px 20px; text-align: center; }
+    h1 { margin: 5px 0; font-size: 1.5rem; letter-spacing: -0.5px; line-height: 1.2; }
 
-    h1 { margin: 10px 0; font-size: 1.6rem; letter-spacing: -0.5px; }
-    h1 span { color: #22c55e; }
-
-    /* BUTTON: REQUEST MY TRANSACTION */
+    /* BUTTON: REQUEST MY TRANSACTION (Moved to bottom) */
     .cta-button {
-      display: block; width: 100%; background-color: #22c55e; color: #fff;
-      padding: 20px; border-radius: 12px; font-weight: 900; font-size: 1.3rem;
-      text-decoration: none; margin-top: 15px; 
+      display: block; width: 90%; background-color: #22c55e; color: #fff;
+      padding: 20px; border-radius: 12px; font-weight: 900; font-size: 1.2rem;
+      text-decoration: none; margin: 20px auto 10px auto; 
       box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+      text-align: center;
       transition: transform 0.1s;
     }
     .cta-button:active { transform: scale(0.98); }
 
-    /* STEPS SECTION */
-    .quick-start { padding: 0 20px; }
-    .quick-start h2 { text-align: center; font-size: 1.1rem; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
-
-    .step-item {
-      display: flex; align-items: flex-start; margin-bottom: 20px;
-      border-bottom: 1px solid #f0f0f0; padding-bottom: 15px;
+    .guide-wrapper {
+      background-color: #f9f9f9;
+      margin: 15px 0 0 0;
+      padding: 25px 20px;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
     }
-    .step-item:last-child { border-bottom: none; }
+
+    .quick-start h2 { text-align: center; font-size: 1rem; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; }
+
+    .step-item { display: flex; align-items: flex-start; margin-bottom: 25px; }
+    .step-item:last-child { margin-bottom: 0; }
     
-    /* This makes the emoji stand alone, large, and centered with the text */
     .step-num { 
-      font-size: 40px;        /* Adjust this number to make them even bigger */
-      margin-right: 20px;     /* Space between emoji and text */
-      flex-shrink: 0;         /* Prevents the emoji from squishing on small screens */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: none;       /* Ensures no background color */
-      border: none;           /* Ensures no border */
+      font-size: 35px; 
+      margin-right: 15px;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
     }
     
-    .step-content strong { display: block; font-size: 1rem; color: #000; margin-bottom: 4px; }
-    .step-content p { margin: 0; font-size: 0.85rem; color: #666; line-height: 1.4; }
+    .step-content strong { font-size: 1.1rem !important; display: block; color: #000; margin-bottom: 4px; line-height: 1.2; }
+    .step-content p { font-size: 1rem !important; margin: 0; color: #555; line-height: 1.4; }
 
-   .guide-wrapper {
-  background-color: #f9f9f9; /* The light grey contrast */
-  margin: 20px -20px 0 -20px; /* Aligns with card edges */
-  padding: 30px 20px;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-  }
-   /* The Bold Heading */
-.step-content strong {
-  font-size: 1.15rem !important; /* Slightly bigger */
-  display: block;
-  margin-bottom: 4px;
-}
-
-/* The Subtitle (The 'p' tag) */
-.step-content p {
-  font-size: 1.05rem !important; /* This makes the subtitle bigger */
-  line-height: 1.4;
-  color: #555; /* Slightly darker for better readability on grey */
-  margin: 0;
-}
-
-    /* NOTIFICATION TOAST (Top Position) */
     #notification-toast {
-      position: fixed; 
-      top: 10px; /* Top of screen */
-      left: 50%;
-      transform: translateX(-50%) translateY(-150%); /* Start hidden above */
-      width: 90%;
-      max-width: 400px;
-      background: #ffffff; 
-      border-left: 5px solid #22c55e; 
-      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-      border-radius: 8px; 
-      padding: 12px; 
-      display: flex; align-items: center;
-      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      z-index: 9999;
+      position: fixed; top: 10px; left: 50%; transform: translateX(-50%) translateY(-150%);
+      width: 92%; max-width: 400px; background: #ffffff; 
+      border-left: 5px solid #22c55e; box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+      border-radius: 8px; padding: 10px; display: flex; align-items: center;
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 9999;
     }
     #notification-toast.show { transform: translateX(-50%) translateY(0); }
-    
     .toast-icon { font-size: 24px; margin-right: 12px; }
     .toast-content { font-size: 0.8rem; color: #333; }
     .toast-bold { font-weight: bold; color: #000; }
@@ -145,115 +105,93 @@
 
   <div id="notification-toast">
     <div class="toast-icon">💸</div>
-    <div class="toast-content" id="toast-text">
-      </div>
+    <div class="toast-content" id="toast-text"></div>
   </div>
 
   <main>
     <div class="progress-container">
       <div class="progress-fill"></div>
     </div>
-    <div class="progress-text" style="text-align: center; padding-right: 0;">Progress: 25% Completed</div>
+    <div class="progress-text">Progress: 25% Completed</div>
 
     <section class="hero">
-      <div style="width: 70px; height: 70px; background:#f0fdf4; border: 3px solid #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
-        <span style="color: #22c55e; font-size: 40px; font-weight: 900;">$</span>
+      <div style="width: 60px; height: 60px; background:#f0fdf4; border: 3px solid #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">
+        <span style="color: #22c55e; font-size: 32px; font-weight: 900;">$</span>
       </div>
-      
       <h1>Claim Your <span style="color:#22c55e;">Cash Transaction</span></h1>
-      <p style="color:#666; font-size: 0.95rem; margin-top: 5px;">Follow the steps below to verify & withdraw.</p>
-
-      <a href="prelander.html" class="cta-button">REQUEST MY TRANSACTION &rarr;</a>
+      <p style="color:#666; font-size: 0.9rem; margin-top: 5px;">Follow the steps below to verify & withdraw.</p>
     </section>
 
-   <div class="guide-wrapper"> 
-   <section class="quick-start">
-      <h2>Quick Start Guide</h2>
+    <div class="guide-wrapper"> 
+      <section class="quick-start">
+        <h2>Quick Start Guide</h2>
 
-      <div class="step-item">
-        <div class="step-num">💸</div>
-        <div class="step-content">
-          <strong>Click on 'REQUEST MY TRANSACTION'</strong>
-          <p>(The button above.)</p>
+        <div class="step-item">
+          <div class="step-num">💸</div>
+          <div class="step-content">
+            <strong>Click on 'REQUEST MY TRANSACTION'</strong>
+            <p>(The button below.)</p>
+          </div>
         </div>
-      </div>
 
-      <div class="step-item">
-        <div class="step-num">✅</div>
-        <div class="step-content">
-          <strong>Answer questions and set up your profile</strong>
-          <p>(Takes 30 seconds.)</p>
+        <div class="step-item">
+          <div class="step-num">✅</div>
+          <div class="step-content">
+            <strong>Answer questions and set up your profile</strong>
+            <p>(Takes 30 seconds.)</p>
+          </div>
         </div>
-      </div>
 
-      <div class="step-item">
-        <div class="step-num">💼</div>
-        <div class="step-content">
-          <strong>Complete at least TWO to FIVE of the suggested deals (Required)</strong>
-          <p>(Most people get at least <span style="color: #22c55e;">$120</span> in cashable payouts with just <span style="color: #22c55e;">3</span> deals!)</p>
+        <div class="step-item">
+          <div class="step-num">💼</div>
+          <div class="step-content">
+            <strong>Complete at least TWO to FIVE of the suggested deals (Required)</strong>
+            <p>(Most people get at least <span style="color: #22c55e;">$120</span> in cashable payouts with just <span style="color: #22c55e;">3</span> deals!)</p>
+          </div>
         </div>
-      </div>
 
-      <div class="step-item">
-        <div class="step-num">⏱️</div>
-        <div class="step-content">
-          <strong>Claim your transaction and repeat as many times as you want!</strong>
-          <p>(Fun fact: <span style="color: #22c55e;">65%</span> of our daily highest-earning members usually quit their jobs by their first month completing deals everyday!)</p>
+        <div class="step-item">
+          <div class="step-num">⏱️</div>
+          <div class="step-content">
+            <strong>Claim your transaction and repeat as many times as you want!</strong>
+            <p>(Fun fact: <span style="color: #22c55e;">65%</span> of our daily highest-earning members usually quit their jobs by their first month completing deals everyday!)</p>
+          </div>
         </div>
-      </div>
-
-    </section>
+      </section>
     </div>
+
+    <a href="prelander.html" class="cta-button">REQUEST MY TRANSACTION &rarr;</a>
+    <div style="text-align:center; font-size: 0.65rem; color: #ccc; margin-top: 5px;">Secure 256-bit Encrypted Connection</div>
   </main>
 
-  <footer style="margin-top:20px; color: rgba(0,0,0,0.4); font-size: 0.75rem; text-align: center;">
+  <footer style="margin: 20px 0; color: rgba(255,255,255,0.6); font-size: 0.75rem; text-align: center;">
     &copy; 2026 RewardsHubs. Not affiliated with TikTok or Cash App.
   </footer>
 
   <script>
-    // DATA ARRAYS
     const users = ["@tiktok_queen", "@money_moves88", "@jason_builds", "@sarah_hustles", "@cash_king_01", "@beccas_finds", "@crypto_dave", "@daily_deals_usa"];
-    
-    // Logic: Random function to generate natural looking numbers
-    function getRandomInt(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+    function getRandomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 
     function showToast() {
       const toast = document.getElementById('notification-toast');
       const textContainer = document.getElementById('toast-text');
-
-      // 1. Generate Random Data
       const user = users[Math.floor(Math.random() * users.length)];
-      const amount = getRandomInt(50, 750); // $50 - $750
-      const hours = getRandomInt(1, 5); // 1 - 5 hours
-      const minutesAgo = getRandomInt(1, 14); // 1 - 14 minutes ago
+      const amount = getRandomInt(50, 750);
+      const hours = getRandomInt(1, 5);
+      const minutesAgo = getRandomInt(1, 14);
 
-      // 2. Build HTML String
       textContainer.innerHTML = `
         <span class="toast-bold">${user}</span> received 
         <span class="toast-green">$${amount}</span> on Cash App after 
         ${hours} hour${hours > 1 ? 's' : ''} of deal completions.
         <span class="toast-time">${minutesAgo} minutes ago</span>
       `;
-
-      // 3. Show Toast
       toast.classList.add('show');
-
-      // 4. Hide after 4.5 seconds
-      setTimeout(() => {
-        toast.classList.remove('show');
-      }, 4500);
+      setTimeout(() => { toast.classList.remove('show'); }, 4500);
     }
 
-    // Start Loop
     window.onload = function() {
-      // Show first one after 2 seconds
-      setTimeout(() => {
-        showToast();
-        // Repeat every 8-12 seconds
-        setInterval(showToast, 9000); 
-      }, 2000);
+      setTimeout(() => { showToast(); setInterval(showToast, 9000); }, 2000);
     };
   </script>
 </body>
