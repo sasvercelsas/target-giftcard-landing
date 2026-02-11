@@ -4,92 +4,124 @@
  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💵</text></svg>">
   
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <title>Claim Your $750 Cash Gift Card</title>
   
   <style>
+    /* 1. RESET FOR MOBILE */
+    * {
+      box-sizing: border-box; /* Prevents padding from adding to width */
+    }
+
     body {
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: center !important; 
-      min-height: 100vh !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
       margin: 0;
+      padding: 0;
       width: 100%;
       background-color: #0a0a0a;
       color: #ffffff;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      overflow-x: hidden;
+      overflow-x: hidden; /* Hard stop for horizontal scrolling */
     }
 
     main {
-      flex: 1 0 auto;
       width: 100%;
-      max-width: 600px;
+      max-width: 500px; /* Slimmed down for better US mobile display */
       margin: 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
+      padding: 15px; /* Side breathing room for mobile */
     }
 
-    /* Green Timer Styling */
+    /* 2. RESPONSIVE TEXT */
+    h1 {
+      font-size: 1.5rem;
+      line-height: 1.3;
+      text-align: center;
+      margin: 10px 0 20px 0;
+    }
+
     .timer-container {
       background: #1a1a1a;
       border: 1px solid #22c55e;
-      padding: 10px 20px;
+      padding: 8px 15px;
       border-radius: 50px;
       margin-bottom: 20px;
       font-weight: bold;
       color: #22c55e;
+      font-size: 0.9rem;
     }
 
     h1 span { color: #22c55e; }
 
+    /* 3. FULL-WIDTH BUTTON FOR THUMB TAPS */
     .cta-button {
-      display: inline-block;
-      margin: 20px auto;
+      display: block;
+      width: 100%; /* Makes it easier to hit on mobile */
+      text-align: center;
       text-decoration: none;
       background-color: #22c55e;
       color: #000;
-      padding: 18px 40px;
-      border-radius: 8px;
+      padding: 20px;
+      border-radius: 12px;
       font-weight: 800;
-      font-size: 1.2rem;
-      transition: transform 0.2s;
+      font-size: 1.3rem;
+      margin: 10px 0;
       cursor: pointer;
     }
 
-    .cta-button:hover { transform: scale(1.05); background-color: #16a34a; }
+    /* 4. FLEXIBLE CARDS */
+    .steps-card { 
+      background-color: #111; 
+      border: 1px solid #333; 
+      border-radius: 15px; 
+      padding: 15px; 
+      width: 100%; 
+    }
 
-    .steps-card { background-color: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; width: 100%; box-sizing: border-box; }
-    .step-text strong { color: #22c55e; }
-    .step-divider { height: 1px; background-color: #333; margin: 15px 0; }
+    .step {
+      display: flex;
+      align-items: flex-start; /* Aligns icon to top of text */
+      padding: 10px 0;
+    }
 
-    /* POPUP STYLING */
+    .step-text strong { color: #22c55e; display: block; font-size: 1rem; }
+    .step-text p { color: #888; margin: 4px 0 0 0; font-size: 0.85rem; line-height: 1.4; }
+    .step-divider { height: 1px; background-color: #333; margin: 10px 0; }
+
+    /* POPUP STYLING (Mobile Friendly) */
     #notification-toast {
       position: fixed;
-      bottom: 20px;
-      left: 20px;
+      bottom: 15px;
+      left: 15px;
+      right: 15px; /* Added right to center it on very small screens */
       background: #1a1a1a;
       border: 1px solid #22c55e;
       color: white;
-      padding: 12px 20px;
-      border-radius: 10px;
+      padding: 12px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-      transform: translateY(150%);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+      transform: translateY(200%);
       transition: transform 0.5s ease-in-out;
       z-index: 9999;
-      max-width: 300px;
     }
     #notification-toast.show { transform: translateY(0); }
-    .toast-icon { font-size: 24px; margin-right: 12px; }
-    .toast-content { font-size: 0.85rem; }
-    .toast-name { font-weight: bold; color: #22c55e; }
-
-    footer { padding: 40px 20px; text-align: center; border-top: 1px solid #333; color: #888; font-size: 0.8rem; width: 100%; background: #0a0a0a; }
+    
+    footer { 
+      padding: 30px 15px; 
+      text-align: center; 
+      border-top: 1px solid #333; 
+      color: #888; 
+      font-size: 0.75rem; 
+      width: 100%; 
+    }
   </style>
 </head>
 <body>
@@ -99,100 +131,78 @@
       OFFER EXPIRES IN: <span id="countdown">04:59</span>
     </div>
 
-    <section class="hero" style="text-align:center;">
+    <section class="hero" style="width: 100%;">
       <div class="logo">
-        <div style="width: 80px; height: 80px; border: 4px solid #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
-          <span style="color: #22c55e; font-size: 50px; font-weight: 900; font-family: sans-serif;">$</span>
+        <div style="width: 70px; height: 70px; border: 3px solid #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+          <span style="color: #22c55e; font-size: 40px; font-weight: 900;">$</span>
         </div>
       </div>
       <h1>Complete the steps below to claim your <span>$750 Cash</span> giftcard!</h1>
       <a href="prelander.html" class="cta-button" id="main-cta">START NOW &rarr;</a>
     </section>
 
-    <section class="how-it-works">
+    <section class="how-it-works" style="width: 100%; margin-top: 20px;">
       <div class="steps-card">
-        <div class="step" style="display:flex; align-items:center;">
-          <div style="color:#22c55e; font-size:24px; margin-right:15px;">📱</div>
-          <div class="step-text"><strong>Complete 3-5 Featured Deals</strong><p style="color:#888; margin:0;">Choose from top apps or games.</p></div>
+        <div class="step">
+          <div style="font-size:24px; margin-right:15px;">📱</div>
+          <div class="step-text"><strong>Complete 3-5 Featured Deals</strong><p>Choose from top apps or games.</p></div>
         </div>
         <div class="step-divider"></div>
-        <div class="step" style="display:flex; align-items:center;">
-          <div style="color:#22c55e; font-size:24px; margin-right:15px;">⏱️</div>
-          <div class="step-text"><strong>Takes 10-15 Minutes</strong><p style="color:#888; margin:0;">Fast-track verification for rewards.</p></div>
+        <div class="step">
+          <div style="font-size:24px; margin-right:15px;">⏱️</div>
+          <div class="step-text"><strong>Takes 10-15 Minutes</strong><p>Fast-track verification for rewards.</p></div>
         </div>
         <div class="step-divider"></div>
-        <div class="step" style="display:flex; align-items:center;">
-          <div style="color:#22c55e; font-size:24px; margin-right:15px;">💰</div>
-          <div class="step-text"><strong>Get Up To $750</strong><p style="color:#888; margin:0;">Sent via email upon completion.</p></div>
+        <div class="step">
+          <div style="font-size:24px; margin-right:15px;">💰</div>
+          <div class="step-text"><strong>Get Up To $750</strong><p>Sent via email upon completion.</p></div>
         </div>
       </div>
     </section>
   </main>
 
   <div id="notification-toast">
-    <div class="toast-icon">✅</div>
-    <div class="toast-content">
-      <span class="toast-name" id="p-name">Sarah M.</span> from <span id="p-state">California</span><br>
+    <div style="font-size: 24px; margin-right: 12px;">✅</div>
+    <div style="font-size: 0.8rem;">
+      <span style="font-weight:bold; color:#22c55e;" id="p-name">Sarah M.</span> from <span id="p-state">California</span><br>
       just claimed their <b>$750 Gift Card!</b>
     </div>
   </div>
 
   <footer>
     <p>&copy; 2026 RewardsHubs. All Rights Reserved.</p>
-    <p style="font-size:0.7rem; opacity:0.5;">Disclaimer: This site is not endorsed by TikTok Inc.</p>
+    <p style="opacity:0.5; font-size: 0.65rem;">Disclaimer: This site is not endorsed by TikTok Inc.</p>
   </footer>
 
   <script>
-    // 1. Countdown Timer Logic
+    // Timer & Popup logic remains same as before...
     function startTimer(duration, display) {
       var timer = duration, minutes, seconds;
       setInterval(function () {
         minutes = parseInt(timer / 60, 10);
         seconds = parseInt(timer % 60, 10);
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-        display.textContent = minutes + ":" + seconds;
+        display.textContent = (minutes < 10 ? "0" + minutes : minutes) + ":" + (seconds < 10 ? "0" + seconds : seconds);
         if (--timer < 0) { timer = duration; }
       }, 1000);
     }
+    
+    const names = ["James", "Emma", "Michael", "Sophia", "Robert", "Isabella", "David", "Mia", "William", "Olivia"];
+    const states = ["NY", "CA", "TX", "FL", "IL", "GA", "OH", "MI", "AZ"];
+
+    function showPopups() {
+      const toast = document.getElementById('notification-toast');
+      setInterval(() => {
+        document.getElementById('p-name').innerText = names[Math.floor(Math.random()*names.length)] + " " + String.fromCharCode(65+Math.floor(Math.random()*26)) + ".";
+        document.getElementById('p-state').innerText = states[Math.floor(Math.random()*states.length)];
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 4000);
+      }, 12000);
+    }
+
     window.onload = function () {
       startTimer(299, document.querySelector('#countdown'));
       showPopups();
     };
-
-    // 2. Random Popup Logic
-    const names = ["James", "Emma", "Michael", "Sophia", "Robert", "Isabella", "David", "Mia", "William", "Olivia", "Daniel", "Amelia", "Joseph", "Charlotte", "Christopher", "Evelyn"];
-    const states = ["New York", "California", "Texas", "Florida", "Illinois", "Georgia", "Ohio", "Michigan", "Arizona", "Washington", "Virginia", "New Jersey", "Colorado"];
-
-    function showPopups() {
-      const toast = document.getElementById('notification-toast');
-      const nameEl = document.getElementById('p-name');
-      const stateEl = document.getElementById('p-state');
-
-      function trigger() {
-        // Set Random Data
-        nameEl.innerText = names[Math.floor(Math.random() * names.length)] + " " + String.fromCharCode(65 + Math.floor(Math.random() * 26)) + ".";
-        stateEl.innerText = states[Math.floor(Math.random() * states.length)];
-        
-        // Show
-        toast.classList.add('show');
-        
-        // Hide after 4 seconds
-        setTimeout(() => {
-          toast.classList.remove('show');
-          // Wait 6-12 seconds before showing next one
-          setTimeout(trigger, Math.random() * 6000 + 6000);
-        }, 4000);
-      }
-      
-      // Start the cycle after 3 seconds
-      setTimeout(trigger, 3000);
-    }
-
-    // Button Click Logic
-    document.getElementById('main-cta').addEventListener('click', function() {
-      this.textContent = 'VERIFYING...';
-    });
   </script>
 </body>
 </html>
