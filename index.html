@@ -19,19 +19,18 @@
       //overflow: hidden; /* Prevent any scrolling */
     }
 
-    main { 
-      width: 100%; 
-      max-width: 500px; 
-      background-color: #ffffff; 
-      border-radius: 20px; 
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      margin-top: 70px; /* Space for Toast */
-      margin-bottom: 105px; /* Exact space reserved for the Button at the bottom */
-      flex-grow: 1; /* Stretch to fill the middle */
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
+    main {
+  width: 100%; 
+  max-width: 500px; 
+  background-color: #ffffff; 
+  border-radius: 20px; 
+  margin-top: 70px; 
+  margin-bottom: 115px; 
+  display: flex;
+  flex-direction: column;
+  min-height: 550px; /* Forces the white card to stay visible and tall */
+  overflow: hidden;
+}
 
     .progress-container {
       width: 94%;
@@ -62,9 +61,9 @@
 
     .guide-wrapper {
   background-color: #f1f1f1; 
-  padding: 5px 12px; /* Tightened top padding */
+  padding: 10px 12px;
   border-top: 1px solid #eee;
-  flex-grow: 1;
+  flex: 1; /* This pushes the section to the bottom of the card */
   display: flex;
   flex-direction: column;
 }
@@ -72,8 +71,8 @@
 .quick-start {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Stacks steps at the top instead of spreading them */
-  flex-grow: 1;
+  justify-content: flex-start; /* Stacks steps tight together */
+  gap: 8px; /* This creates the exact 'small gap' between white steps */
 }
 
 .step-item { 
