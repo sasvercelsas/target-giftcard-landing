@@ -4,7 +4,7 @@
  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💵</text></svg>">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Cash App Reward Portal</title>
+  <title>Cash Giftcard Portal</title>
   
   <style>
     * { box-sizing: border-box; }
@@ -33,10 +33,15 @@
     }
 
     /* PROGRESS BAR: Fixed at top of card */
+    /* NEW: Progress bar is now detached and has a border to pop */
     .progress-container {
-      width: 100%; 
-      background-color: #f0f0f0; 
-      height: 12px;
+      width: 90%;             /* Narrower so it doesn't touch the sides */
+      background-color: #eee; /* Light gray "empty" track */
+      height: 14px;           /* Slightly thicker */
+      margin: 15px auto 5px;  /* 15px down from the top, centered */
+      border-radius: 10px;    /* Rounded ends */
+      border: 2px solid #000; /* Black border makes it pop against green or white */
+      overflow: hidden;       /* Keeps the fill inside the rounded corners */
     }
     .progress-fill {
       width: 25%; /* 1/4 Completed */
@@ -120,7 +125,7 @@
     <div class="progress-container">
       <div class="progress-fill"></div>
     </div>
-    <div class="progress-text">Progress: 25% Completed</div>
+    <div class="progress-text" style="text-align: center; padding-right: 0;">Progress: 25% Completed</div>
 
     <section class="hero">
       <div style="width: 70px; height: 70px; background:#f0fdf4; border: 3px solid #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
