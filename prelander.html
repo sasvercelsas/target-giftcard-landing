@@ -1,45 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Opening Secure Browser...</title>
-    <style>
-        body { font-family: -apple-system, sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; background: #f4f4f4; color: #333; }
-        .loader-box { text-align: center; }
-        .spinner { border: 4px solid #ddd; border-top: 4px solid #CC0000; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 10px auto; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Verifying Connection...</title>
+  <style>
+    body {
+      background-color: #22c55e;
+      font-family: -apple-system, system-ui, sans-serif;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      height: 100vh; margin: 0; color: white; text-align: center;
+    }
+    .loader {
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #16a34a;
+      border-radius: 50%;
+      width: 50px; height: 50px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    
+    .status-text { font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; }
+    .sub-text { font-size: 0.9rem; opacity: 0.9; margin-bottom: 30px; }
+
+    .btn {
+      background: white; color: #22c55e;
+      padding: 20px 40px; border-radius: 12px;
+      text-decoration: none; font-weight: 900; font-size: 1.3rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+  </style>
 </head>
 <body>
-    <div class="loader-box">
-        <div class="spinner"></div>
-        <p>Redirecting to Secure Browser...</p>
-    </div>
 
-    <script>
-        window.onload = function() {
-            // 1. YOUR AFFILIATE LINK HERE
-            var targetUrl = "https://trkio.org/aff_c?offer_id=1595&aff_id=168374";
-            
-            // 2. THE BREAKOUT LOGIC
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  <div class="loader"></div>
+  <div class="status-text">Verifying your transaction...</div>
+  <div class="sub-text">Please do not close this window.</div>
 
-            // Android Breakout (Forces Chrome)
-            if (/android/i.test(userAgent)) {
-                var rawUrl = targetUrl.replace(/^https?:\/\//, "");
-                window.location.href = "intent://" + rawUrl + "#Intent;scheme=https;package=com.android.chrome;end";
-            } 
-            // iOS Breakout (Forces Safari via "FTP" or "Blob" trick)
-            else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                // TikTok iOS is very strict. We use a standard redirect.
-                // If it stays in-app, the user will be on a clean page.
-                window.location.href = targetUrl;
-            } 
-            // PC or other
-            else {
-                window.location.href = targetUrl;
-            }
-        };
-    </script>
+  <a href="YOUR_OFFER_LINK_HERE" class="btn" id="offerLink">CONTINUE TO OFFER &rarr;</a>
+
+  <script>
+    // Force a redirect after 1.5 seconds if they haven't clicked
+    setTimeout(function() {
+      window.location.href = "https://glctrk.org/aff_c?offer_id=1595&aff_id=168374";
+    }, 1500);
+  </script>
+
 </body>
 </html>
