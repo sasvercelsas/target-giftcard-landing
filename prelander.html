@@ -2,50 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Verifying Connection...</title>
-  <style>
-    body {
-      background-color: #22c55e;
-      font-family: -apple-system, system-ui, sans-serif;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      height: 100vh; margin: 0; color: white; text-align: center;
-    }
-    .loader {
-      border: 5px solid #f3f3f3;
-      border-top: 5px solid #16a34a;
-      border-radius: 50%;
-      width: 50px; height: 50px;
-      animation: spin 1s linear infinite;
-      margin-bottom: 20px;
-    }
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    
-    .status-text { font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; }
-    .sub-text { font-size: 0.9rem; opacity: 0.9; margin-bottom: 30px; }
-
-    .btn {
-      background: white; color: #22c55e;
-      padding: 20px 40px; border-radius: 12px;
-      text-decoration: none; font-weight: 900; font-size: 1.3rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-  </style>
+  <title>Redirecting...</title>
+  <style>body { background-color: #22c55e; margin: 0; }</style>
 </head>
 <body>
-
-  <div class="loader"></div>
-  <div class="status-text">Verifying your transaction...</div>
-  <div class="sub-text">Please do not close this window.</div>
-
-  <a href="YOUR_OFFER_LINK_HERE" class="btn" id="offerLink">CONTINUE TO OFFER &rarr;</a>
-
   <script>
-    // Force a redirect after 1.5 seconds if they haven't clicked
-    setTimeout(function() {
-      window.location.href = "https://glctrk.org/aff_c?offer_id=1595&aff_id=168374";
-    }, 1500);
+    // Replace with your actual offer or tracker link
+    window.location.replace("https://glctrk.org/aff_c?offer_id=1595&aff_id=168374");
   </script>
-
 </body>
 </html>
