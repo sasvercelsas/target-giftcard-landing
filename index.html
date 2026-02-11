@@ -61,10 +61,11 @@
     }
 
     .guide-wrapper {
-      background-color: #f9f9f9;
-      padding: 0 12px;
+      /* Removed solid background to let the individual white steps stand out */
+      background-color: #f1f1f1; 
+      padding: 10px 12px;
       border-top: 1px solid #eee;
-      flex-grow: 1; /* Stretch grey area to fill card */
+      flex-grow: 1;
       display: flex;
       flex-direction: column;
     }
@@ -72,18 +73,29 @@
     .quick-start {
       display: flex;
       flex-direction: column;
-      justify-content: space-evenly; /* PUSHES STEPS APART TO FILL ALL DEAD SPACE */
+      justify-content: space-between; /* Spreads cards to touch the button */
       flex-grow: 1;
     }
 
+    .step-item { 
+      display: flex; 
+      align-items: center; 
+      background: #ffffff; /* This creates the "white section" */
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 8px; /* The "small margin" between steps */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    
+    .step-num { font-size: 24px; margin-right: 12px; flex-shrink: 0; }
+    .step-content strong { font-size: 0.95rem; display: block; color: #000; line-height: 1.1; }
+    .step-content p { font-size: 0.8rem; margin: 0; color: #555; line-height: 1.25; }
+
+    /* Tightened the header to ensure visibility */
     .quick-start h2 { 
-      text-align: center; 
-      margin: 0; 
-      padding: 3px 0; 
-      font-size: 1rem; 
-      color: #22c55e;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      text-align: center; margin: 0; padding: 5px 0; 
+      font-size: 0.9rem; color: #22c55e; 
     }
 
     .step-item { 
