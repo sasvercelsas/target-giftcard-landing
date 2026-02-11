@@ -11,12 +11,12 @@
     
     body {
       display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
-      min-height: 100vh; margin: 0; padding: 15px 10px; width: 100%;
+      min-height: 100vh; margin: 0; padding: 5px 10px; width: 100%;
       background-color: #22c55e; 
       color: #333;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       overflow-x: hidden;
-      padding-bottom: 120px; 
+      padding-bottom: 110px; 
     }
 
     main { 
@@ -28,17 +28,16 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       overflow: hidden; 
       position: relative;
-      margin-top: 65px; 
+      margin-top: 50px; /* Reduced from 65px */
     }
 
-    /* PROGRESS BAR */
     .progress-container {
-      width: 90%;
+      width: 85%;
       background-color: #eee; 
-      height: 14px;
-      margin: 15px auto 5px;
+      height: 10px; /* Thinner progress bar */
+      margin: 10px auto 4px;
       border-radius: 10px;
-      border: 2px solid #000;
+      border: 1.5px solid #000;
       overflow: hidden;
     }
     .progress-fill {
@@ -47,94 +46,87 @@
       background: linear-gradient(90deg, #16a34a, #22c55e);
     }
     .progress-text {
-      text-align: center; font-size: 0.7rem; color: #666; font-weight: bold; margin-bottom: 5px;
+      text-align: center; font-size: 0.65rem; color: #666; font-weight: bold; margin-bottom: 4px;
     }
 
-    .hero { padding: 15px 20px 10px 20px; text-align: center; }
-    h1 { margin: 5px 0px 0px 0px; font-size: 1.5rem; letter-spacing: -0.5px; line-height: 1.2; }
+    .hero { padding: 5px 20px 8px 20px; text-align: center; }
+    h1 { margin: 2px 0; font-size: 1.3rem; letter-spacing: -0.5px; line-height: 1.1; }
 
-    /* PULSATING FIXED BUTTON */
+    /* COMPACT HERO ICON */
+    .hero-icon {
+      width: 45px; height: 45px; /* Reduced from 60px */
+      background:#f0fdf4; border: 2px solid #22c55e; border-radius: 50%; 
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 5px;
+    }
+
     .cta-button {
       position: fixed;
-      bottom: 20px;
+      bottom: 15px;
       left: 50%;
       transform: translateX(-50%);
       width: 90%;
       max-width: 460px;
       background-color: #22c55e;
       color: #fff;
-      padding: 20px;
+      padding: 16px; /* Slightly smaller padding */
       border-radius: 12px;
       font-weight: 900;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       text-decoration: none;
       text-align: center;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
       z-index: 9999;
       animation: pulse 2s infinite;
-      transition: transform 0.1s;
     }
 
     @keyframes pulse {
-      0% { transform: translateX(-50%) scale(1); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); }
-      50% { transform: translateX(-50%) scale(1.03); box-shadow: 0 12px 25px rgba(34, 197, 94, 0.5); }
-      100% { transform: translateX(-50%) scale(1); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); }
+      0% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.02); }
+      100% { transform: translateX(-50%) scale(1); }
     }
-
-    .cta-button:active { transform: translateX(-50%) scale(0.96); animation: none; }
 
     .guide-wrapper {
       background-color: #f9f9f9;
-      margin: 5px 0px 0px 0px;
-      padding: 0px 15px 15px 15px; /* Balanced side padding */
+      padding: 0 10px 10px 10px;
       border-top: 1px solid #eee;
     }
 
-    /* HEADER PADDING ADJUSTMENT */
     .quick-start h2 { 
       text-align: center; 
       margin: 0; 
-      padding: 20px 0; /* Natural padding around the heading */
-      font-size: 1.3rem; 
-      letter-spacing: -0.5px; 
-      line-height: 1.2;
+      padding: 10px 0; /* Tightened from 20px */
+      font-size: 1.1rem; 
+      color: #22c55e;
     }
 
-    /* INDIVIDUAL STEP BORDERS */
     .step-item { 
       display: flex; 
-      align-items: flex-start; 
-      margin-bottom: 12px; 
+      align-items: center; /* Centered align for compact look */
+      margin-bottom: 8px; /* Reduced gap between steps */
       background: #ffffff;
       border: 1px solid #e0e0e0;
-      border-radius: 12px;
-      padding: 15px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+      border-radius: 10px;
+      padding: 10px; /* Thinner boxes */
     }
     
-    .step-num { 
-      font-size: 32px; 
-      margin-right: 15px;
-      flex-shrink: 0;
-    }
+    .step-num { font-size: 24px; margin-right: 12px; flex-shrink: 0; }
     
-    .step-content strong { font-size: 1.05rem !important; display: block; color: #000; margin-bottom: 4px; line-height: 1.2; }
-    .step-content p { font-size: 0.95rem !important; margin: 0; color: #555; line-height: 1.4; }
+    .step-content strong { font-size: 0.95rem !important; display: block; color: #000; margin-bottom: 2px; line-height: 1.1; }
+    .step-content p { font-size: 0.85rem !important; margin: 0; color: #555; line-height: 1.2; }
 
-    /* NOTIFICATION TOAST */
     #notification-toast {
       position: fixed; top: 10px; left: 50%; transform: translateX(-50%) translateY(-150%);
       width: 92%; max-width: 400px; background: #ffffff; 
       border-left: 5px solid #22c55e; box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-      border-radius: 8px; padding: 10px; display: flex; align-items: center;
+      border-radius: 8px; padding: 8px; display: flex; align-items: center;
       transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 10000;
     }
     #notification-toast.show { transform: translateX(-50%) translateY(0); }
-    .toast-icon { font-size: 24px; margin-right: 12px; }
-    .toast-content { font-size: 0.8rem; color: #333; }
-    .toast-bold { font-weight: bold; color: #000; }
+    .toast-icon { font-size: 20px; margin-right: 10px; }
+    .toast-content { font-size: 0.75rem; color: #333; }
+    .toast-bold { font-weight: bold; }
     .toast-green { color: #22c55e; font-weight: 800; }
-    .toast-time { display: block; font-size: 0.7rem; color: #999; margin-top: 2px; }
+    .toast-time { display: block; font-size: 0.65rem; color: #999; }
   </style>
 </head>
 <body>
@@ -149,20 +141,20 @@
       <div class="progress-fill"></div>
     </div>
     <div class="progress-text">
-      Progress: <span style="font-size: 1.1rem; font-weight: 900; color: #16a34a;">25%</span> Completed
+      Progress: <span style="font-size: 1rem; font-weight: 900; color: #16a34a;">25%</span> Completed
     </div>
 
     <section class="hero">
-      <div style="width: 60px; height: 60px; background:#f0fdf4; border: 3px solid #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;">
-        <span style="color: #22c55e; font-size: 32px; font-weight: 900;">$</span>
+      <div class="hero-icon">
+        <span style="color: #22c55e; font-size: 24px; font-weight: 900;">$</span>
       </div>
       <h1>Claim Your <span style="color:#22c55e;">Cash Transaction</span></h1>
-      <p style="color:#666; font-size: 0.9rem; margin-top: 5px;">Follow the steps below to verify & withdraw.</p>
+      <p style="color:#666; font-size: 0.85rem; margin-top: 2px;">Follow the steps below to verify & withdraw.</p>
     </section>
 
     <div class="guide-wrapper"> 
       <section class="quick-start">
-        <h2><span style="color:#22c55e;">Quick Start Guide</span></h2>
+        <h2>Quick Start Guide</h2>
 
         <div class="step-item">
           <div class="step-num">💸</div>
@@ -184,15 +176,15 @@
           <div class="step-num">💼</div>
           <div class="step-content">
             <strong>Complete at least TWO to FIVE of the suggested deals (Required)</strong>
-            <p>(Most people get at least <span style="color: #22c55e;">$120</span> in cashable payouts with just <span style="color: #22c55e;">3</span> deals!)</p>
+            <p>(Most people get <span style="color: #22c55e;">$120</span> with just <span style="color: #22c55e;">3</span> deals!)</p>
           </div>
         </div>
 
         <div class="step-item">
           <div class="step-num">⏱️</div>
           <div class="step-content">
-            <strong>Claim your transaction and repeat as many times as you want!</strong>
-            <p>(Fun fact: <span style="color: #22c55e;">65%</span> of our daily highest-earning members usually quit their jobs by their first month completing deals everyday!)</p>
+            <strong>Claim your transaction and repeat as you want!</strong>
+            <p>(Fun fact: <span style="color: #22c55e;">65%</span> of earners quit their jobs!)</p>
           </div>
         </div>
       </section>
@@ -201,7 +193,7 @@
 
   <a href="prelander.html" class="cta-button">REQUEST MY TRANSACTION &rarr;</a>
 
-  <footer style="margin: 20px 0; color: rgba(255,255,255,0.6); font-size: 0.75rem; text-align: center;">
+  <footer style="margin: 10px 0; color: rgba(255,255,255,0.6); font-size: 0.7rem; text-align: center;">
     &copy; 2026 RewardsHubs. Not affiliated with TikTok or Cash App.
   </footer>
 
@@ -220,8 +212,8 @@
       textContainer.innerHTML = `
         <span class="toast-bold">${user}</span> received 
         <span class="toast-green">$${amount}</span> on Cash App after 
-        ${hours} hour${hours > 1 ? 's' : ''} of deal completions.
-        <span class="toast-time">${minutesAgo} minutes ago</span>
+        ${hours}h completion.
+        <span class="toast-time">${minutesAgo}m ago</span>
       `;
       toast.classList.add('show');
       setTimeout(() => { toast.classList.remove('show'); }, 4500);
