@@ -1,22 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
+ <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💵</text></svg>">
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <title>Claim Your $750 Target Gift Card</title>
+  <title>Claim Your $750 Cash Gift Card</title>
   
-  <link rel="stylesheet" href="styles.css">
-  
-  <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-  </script>
-  <script defer src="/_vercel/insights/script.js"></script>
-
   <style>
-    /* THE FIX: Forces the body to center all content blocks */
     body {
       display: flex !important;
       flex-direction: column !important;
@@ -24,133 +16,185 @@
       min-height: 100vh !important;
       margin: 0;
       width: 100%;
-      /* Restores a clean font if CSS fails */
+      background-color: #0a0a0a;
+      color: #ffffff;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      overflow-x: hidden;
     }
 
-    /* Centers the main content block */
     main {
       flex: 1 0 auto;
       width: 100%;
-      max-width: 600px; /* Adjust if your design was wider/narrower */
+      max-width: 600px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 20px;
     }
 
-    /* Ensures the sections inside take up full width of the 600px container */
-    section {
-      width: 100%;
+    /* Green Timer Styling */
+    .timer-container {
+      background: #1a1a1a;
+      border: 1px solid #22c55e;
+      padding: 10px 20px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #22c55e;
     }
 
-    /* Fixes any left-aligned text in the hero */
-    .hero {
-      text-align: center;
-    }
+    h1 span { color: #22c55e; }
 
-    /* Keeps the button centered */
     .cta-button {
       display: inline-block;
       margin: 20px auto;
       text-decoration: none;
+      background-color: #22c55e;
+      color: #000;
+      padding: 18px 40px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 1.2rem;
+      transition: transform 0.2s;
+      cursor: pointer;
     }
+
+    .cta-button:hover { transform: scale(1.05); background-color: #16a34a; }
+
+    .steps-card { background-color: #111; border: 1px solid #333; border-radius: 12px; padding: 20px; width: 100%; box-sizing: border-box; }
+    .step-text strong { color: #22c55e; }
+    .step-divider { height: 1px; background-color: #333; margin: 15px 0; }
+
+    /* POPUP STYLING */
+    #notification-toast {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #1a1a1a;
+      border: 1px solid #22c55e;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      transform: translateY(150%);
+      transition: transform 0.5s ease-in-out;
+      z-index: 9999;
+      max-width: 300px;
+    }
+    #notification-toast.show { transform: translateY(0); }
+    .toast-icon { font-size: 24px; margin-right: 12px; }
+    .toast-content { font-size: 0.85rem; }
+    .toast-name { font-weight: bold; color: #22c55e; }
+
+    footer { padding: 40px 20px; text-align: center; border-top: 1px solid #333; color: #888; font-size: 0.8rem; width: 100%; background: #0a0a0a; }
   </style>
 </head>
 <body>
+
   <main>
-    <section class="hero">
+    <div class="timer-container">
+      OFFER EXPIRES IN: <span id="countdown">04:59</span>
+    </div>
+
+    <section class="hero" style="text-align:center;">
       <div class="logo">
-        <svg viewBox="0 0 100 100" width="90" height="90" style="margin: 0 auto; display: block;">
-          <circle cx="50" cy="50" r="48" fill="#CC0000"/>
-          <circle cx="50" cy="50" r="32" fill="#FFFFFF"/>
-          <circle cx="50" cy="50" r="16" fill="#CC0000"/>
+        <svg viewBox="0 0 100 100" width="80" height="80" style="margin: 0 auto 20px;">
+          <circle cx="50" cy="50" r="48" fill="#22c55e"/>
+          <circle cx="50" cy="50" r="32" fill="#0a0a0a"/>
+          <circle cx="50" cy="50" r="16" fill="#22c55e"/>
         </svg>
       </div>
-
-      <h1>Complete the steps below to claim your <span>$750 Target</span> giftcard!</h1>
-
-      <a href="prelander.html" class="cta-button" onclick="this.textContent='VERIFYING...'">
-    START NOW &rarr;
-     </a>
+      <h1>Complete the steps below to claim your <span>$750 Cash</span> giftcard!</h1>
+      <a href="prelander.html" class="cta-button" id="main-cta">START NOW &rarr;</a>
     </section>
 
     <section class="how-it-works">
-      <h2 style="text-align: center;">HOW IT WORKS:</h2>
-
       <div class="steps-card">
-        <div class="step">
-          <div class="step-icon">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#CC0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-              <line x1="12" y1="18" x2="12" y2="18.01"/>
-            </svg>
-          </div>
-          <div class="step-text">
-            <strong>Complete 3-5 Featured Deals</strong>
-            <p>Choose from top apps, games, or surveys.</p>
-          </div>
+        <div class="step" style="display:flex; align-items:center;">
+          <div style="color:#22c55e; font-size:24px; margin-right:15px;">📱</div>
+          <div class="step-text"><strong>Complete 3-5 Featured Deals</strong><p style="color:#888; margin:0;">Choose from top apps or games.</p></div>
         </div>
-
         <div class="step-divider"></div>
-
-        <div class="step">
-          <div class="step-icon">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#CC0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <polyline points="12 6 12 12 16 14"/>
-            </svg>
-          </div>
-          <div class="step-text">
-            <strong>Takes 10-15 Minutes</strong>
-            <p>Fast-track verification for instant rewards.</p>
-          </div>
+        <div class="step" style="display:flex; align-items:center;">
+          <div style="color:#22c55e; font-size:24px; margin-right:15px;">⏱️</div>
+          <div class="step-text"><strong>Takes 10-15 Minutes</strong><p style="color:#888; margin:0;">Fast-track verification for rewards.</p></div>
         </div>
-
         <div class="step-divider"></div>
-
-        <div class="step">
-          <div class="step-icon">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#CC0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="8" width="18" height="14" rx="2"/>
-              <path d="M12 8V5a3 3 0 0 0-3-3H9a3 3 0 0 0-3 3v3"/>
-              <path d="M12 8V5a3 3 0 0 1 3-3h0a3 3 0 0 1 3 3v3"/>
-              <line x1="12" y1="8" x2="12" y2="22"/>
-              <line x1="3" y1="14" x2="21" y2="14"/>
-            </svg>
-          </div>
-          <div class="step-text">
-            <strong>Get Up To $750</strong>
-            <p>Delivered via email upon successful completion.</p>
-          </div>
+        <div class="step" style="display:flex; align-items:center;">
+          <div style="color:#22c55e; font-size:24px; margin-right:15px;">💰</div>
+          <div class="step-text"><strong>Get Up To $750</strong><p style="color:#888; margin:0;">Sent via email upon completion.</p></div>
         </div>
       </div>
     </section>
-
-    <div class="badge" style="margin: 20px auto; display: flex; justify-content: center; align-items: center;">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;">
-        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-        <polyline points="22 4 12 14.01 9 11.01"/>
-      </svg>
-      <span>USER VERIFIED &amp; ACTIVE TODAY</span>
-    </div>
   </main>
 
-  <footer style="padding: 40px 20px; text-align: center; font-family: sans-serif; border-top: 1px solid #eee; color: #666; font-size: 0.85rem; width: 100%; box-sizing: border-box; background-color: #fff;">
-    <div style="max-width: 600px; margin: 0 auto;">
-        <div style="margin-bottom: 20px;">
-            <span style="font-weight: bold; color: #333; letter-spacing: 1px;">REWARDSHUBS</span>
-        </div>
-        <p style="margin-bottom: 10px;">&copy; 2026 RewardsHubs. All Rights Reserved.</p>
-        <div style="margin-bottom: 20px;">
-            <a href="#" style="color: #666; text-decoration: none; margin: 0 10px;">Privacy Policy</a> | 
-            <a href="#" style="color: #666; text-decoration: none; margin: 0 10px;">Terms of Service</a> | 
-            <a href="#" style="color: #666; text-decoration: none; margin: 0 10px;">Contact Us</a>
-        </div>
-        <p style="font-size: 0.75rem; line-height: 1.4; opacity: 0.7;">
-            Disclaimer: This site is not a part of the TikTok website or TikTok Inc. Additionally, this site is NOT endorsed by TikTok in any way. TikTok is a trademark of TikTok, Inc.
-        </p>
+  <div id="notification-toast">
+    <div class="toast-icon">✅</div>
+    <div class="toast-content">
+      <span class="toast-name" id="p-name">Sarah M.</span> from <span id="p-state">California</span><br>
+      just claimed their <b>$750 Gift Card!</b>
     </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 RewardsHubs. All Rights Reserved.</p>
+    <p style="font-size:0.7rem; opacity:0.5;">Disclaimer: This site is not endorsed by TikTok Inc.</p>
   </footer>
+
+  <script>
+    // 1. Countdown Timer Logic
+    function startTimer(duration, display) {
+      var timer = duration, minutes, seconds;
+      setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+        display.textContent = minutes + ":" + seconds;
+        if (--timer < 0) { timer = duration; }
+      }, 1000);
+    }
+    window.onload = function () {
+      startTimer(299, document.querySelector('#countdown'));
+      showPopups();
+    };
+
+    // 2. Random Popup Logic
+    const names = ["James", "Emma", "Michael", "Sophia", "Robert", "Isabella", "David", "Mia", "William", "Olivia", "Daniel", "Amelia", "Joseph", "Charlotte", "Christopher", "Evelyn"];
+    const states = ["New York", "California", "Texas", "Florida", "Illinois", "Georgia", "Ohio", "Michigan", "Arizona", "Washington", "Virginia", "New Jersey", "Colorado"];
+
+    function showPopups() {
+      const toast = document.getElementById('notification-toast');
+      const nameEl = document.getElementById('p-name');
+      const stateEl = document.getElementById('p-state');
+
+      function trigger() {
+        // Set Random Data
+        nameEl.innerText = names[Math.floor(Math.random() * names.length)] + " " + String.fromCharCode(65 + Math.floor(Math.random() * 26)) + ".";
+        stateEl.innerText = states[Math.floor(Math.random() * states.length)];
+        
+        // Show
+        toast.classList.add('show');
+        
+        // Hide after 4 seconds
+        setTimeout(() => {
+          toast.classList.remove('show');
+          // Wait 6-12 seconds before showing next one
+          setTimeout(trigger, Math.random() * 6000 + 6000);
+        }, 4000);
+      }
+      
+      // Start the cycle after 3 seconds
+      setTimeout(trigger, 3000);
+    }
+
+    // Button Click Logic
+    document.getElementById('main-cta').addEventListener('click', function() {
+      this.textContent = 'VERIFYING...';
+    });
+  </script>
 </body>
 </html>
