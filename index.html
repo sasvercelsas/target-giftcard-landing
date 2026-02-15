@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Cash Giftcard Portal</title>
+
+  <link rel="dns-prefetch" href="//glctrk.org">
+  <link rel="preconnect" href="https://glctrk.org" crossorigin>
   
   <style>
     * { box-sizing: border-box; }
@@ -26,8 +29,6 @@
   border-radius: 20px; 
   margin-top: 70px; 
   margin-bottom: 115px; 
-  display: flex;
-  flex-direction: column;
   display: flex;
   flex-direction: column;
   padding-bottom: 10px; /* ADD THIS: Gives the bottom step breathing room */
@@ -130,6 +131,11 @@
       z-index: 9999;
       animation: pulse 2s infinite;
       border: 2px solid #000;
+      /* ADDED: WebView Tap Fixes */
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      cursor: pointer;
+      font-family: inherit; /* Ensures button matches text perfectly */
     }
 
     @keyframes pulse {
@@ -210,9 +216,17 @@
     </div>
   </main>
 
-  <a href="https://glctrk.org/aff_c?offer_id=1595&aff_id=168374" class="cta-button">REQUEST MY TRANSACTION</a>
+  <form action="https://glctrk.org/aff_c" method="GET" style="margin: 0; padding: 0;">
+    <input type="hidden" name="offer_id" value="1595">
+    <input type="hidden" name="aff_id" value="168374">
+    <input type="hidden" name="cb" id="cache-buster" value="">
+    <button type="submit" class="cta-button">REQUEST MY TRANSACTION</button>
+  </form>
 
   <script>
+    // ADDED: Generates a fresh cache-buster ID instantly on page load
+    document.getElementById('cache-buster').value = Math.floor(Math.random() * 9999999);
+
     const users = ["@tiktok_queen", "@money_moves88", "@jason_builds", "@sarah_hustles", "@cash_king_01", "@beccas_finds", "@crypto_dave", "@daily_deals_usa"];
     function getRandomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 
