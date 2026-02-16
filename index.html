@@ -232,5 +232,17 @@
       setTimeout(() => { showToast(); setInterval(showToast, 10000); }, 2500);
     };
   </script>
+  <script>
+    // Vercel Script Initialization
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    // The Event Tracker
+    document.querySelector('.cta-button').addEventListener('click', function() {
+       if (window.va) { va('event', { name: 'ClaimButton_Clicked' }); }
+    });
+   </script>
+   <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
+ 
 </body>
 </html>
