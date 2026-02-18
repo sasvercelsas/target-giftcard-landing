@@ -3,33 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
+    <title>Connecting...</title>
     <style>
         body {
             background-color: #ffffff;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            overflow: hidden;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
+        .container {
+            text-align: center;
+        }
+
+        /* The Animated Arrows */
+        .arrow {
+            font-size: 40px;
+            color: #00D632;
+            margin-bottom: 10px;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* The Glowing Button */
         #glow-btn {
             background-color: #00D632;
             color: white;
             border: none;
-            padding: 20px 50px;
-            font-size: 22px;
-            font-weight: bold;
+            padding: 22px 60px;
+            font-size: 24px;
+            font-weight: 900;
             text-transform: uppercase;
-            border-radius: 50px;
+            border-radius: 12px;
             cursor: pointer;
-            text-decoration: none;
-            outline: none;
             box-shadow: 0 0 0 0 rgba(0, 214, 50, 0.7);
             animation: glowing 1.5s infinite;
-            transition: transform 0.2s;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         #glow-btn:active {
@@ -37,34 +57,56 @@
         }
 
         @keyframes glowing {
-            0% {
-                box-shadow: 0 0 5px rgba(0, 214, 50, 0.4);
-            }
-            50% {
-                box-shadow: 0 0 25px rgba(0, 214, 50, 0.9);
-            }
-            100% {
-                box-shadow: 0 0 5px rgba(0, 214, 50, 0.4);
-            }
+            0% { box-shadow: 0 0 5px rgba(0, 214, 50, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(0, 214, 50, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(0, 214, 50, 0.4); }
+        }
+
+        /* Loading Overlay */
+        #loader {
+            display: none;
+            margin-top: 20px;
+            color: #666;
+            font-weight: 500;
         }
     </style>
 </head>
 <body>
 
-    <button id="glow-btn">CLICK HERE</button>
+    <div class="container">
+        <div class="arrow">⬇️</div>
+        
+        <button id="glow-btn">
+            CLICK HERE 🚀
+        </button>
+
+        <div id="loader">Securely redirecting to portal...</div>
+    </div>
 
     <script>
         const destination = "https://rewardshubs.co";
+        const btn = document.getElementById('glow-btn');
+        const loader = document.getElementById('loader');
 
-        document.getElementById('glow-btn').addEventListener('click', function() {
-            // Forces the link to open in the system browser (Safari/Chrome)
-            // This is the "Breakout" gesture TikTok requires
-            window.open(destination, '_blank');
+        btn.addEventListener('click', function() {
+            // UI Feedback
+            btn.innerHTML = "VERIFYING...";
+            btn.style.opacity = "0.7";
+            loader.style.display = "block";
+
+            // The Breakout Logic
+            // Using window.open with _blank is the most consistent for Safari/Chrome jump
+            const win = window.open(destination, '_blank');
             
-            // Fallback: If window.open is blocked, redirect the current tab
-            setTimeout(() => {
+            // Fallback for strict browsers
+            if (!win || win.closed || typeof win.closed == 'undefined') {
                 window.location.href = destination;
-            }, 100);
+            } else {
+                // If it opened in a new tab, keep this one clean or close it
+                setTimeout(() => {
+                    window.location.href = "https://google.com"; // Redirect prelander to something boring after click
+                }, 500);
+            }
         });
     </script>
 </body>
