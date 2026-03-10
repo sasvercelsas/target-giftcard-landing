@@ -211,9 +211,8 @@
     &copy; 2026 RewardsHubs. All Rights Reserved.
   </footer>
 
-  <script>
-    document.getElementById('cache-buster').value = Math.floor(Math.random() * 9999999);
-
+<script>
+    // 1. Define the users
     const users = ["@imani_nicole94", "@iam_deshawn_", "@latoya_the_stylist", "@marquis_j92", "@_tanisha.renee_", "@dontaevon_cuts", "@iam_khadijah_", "@kiara_monet88", "@deandre_williams_", "@shonda_lynn_", "@zaria_renee2", "@its_brianna_j", "@ashanti_love_", "@tyrese_the_great", "@nia_marie_official"];
     
     function getRandomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
@@ -221,6 +220,10 @@
     function showToast() {
       const toast = document.getElementById('notification-toast');
       const textContainer = document.getElementById('toast-text');
+      
+      // Safety check to ensure elements exist
+      if (!toast || !textContainer) return;
+
       const user = users[Math.floor(Math.random() * users.length)];
       const amount = getRandomInt(150, 850);
       const minutesAgo = getRandomInt(1, 12);
@@ -230,14 +233,20 @@
         <span class="toast-green">$${amount}</span> on CashApp - Tuesday Bonus!
         <br><span style="font-size: 0.8rem; color: #666; font-weight:bold;">${minutesAgo} minutes ago</span>
       `;
+      
       toast.classList.add('show');
       setTimeout(() => { toast.classList.remove('show'); }, 4500);
     }
 
-    window.onload = function() {
-      setTimeout(() => { showToast(); setInterval(showToast, 10000); }, 2500);
-    };
-  </script>
+    // 2. Start the cycle once the page is ready
+    window.addEventListener('load', function() {
+      // First toast after 2.5 seconds, then every 10 seconds
+      setTimeout(() => { 
+        showToast(); 
+        setInterval(showToast, 10000); 
+      }, 2500);
+    });
+</script>
   <script>
     // Vercel Script Initialization
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
