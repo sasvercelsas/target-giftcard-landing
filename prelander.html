@@ -23,7 +23,6 @@
       display: flex; flex-direction: column; align-items: center;
       min-height: 100vh;
       margin: 0; padding: 0 10px; width: 100%;
-      /* Futuristic Dark Gradient Background */
       background: radial-gradient(circle at top, #064e3b 0%, #022c22 100%);
       color: #e2e8f0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -33,7 +32,6 @@
     main {
       width: 100%; 
       max-width: 500px; 
-      /* Glassmorphism Effect */
       background: rgba(255, 255, 255, 0.03);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
@@ -44,7 +42,6 @@
       display: flex;
       flex-direction: column;
       padding-bottom: 20px;
-      /* Cyan/Green Neon Glow */
       box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
     }
 
@@ -106,7 +103,6 @@
       transition: transform 0.3s ease;
     }
     
-    /* Subtle hover glow for boxes */
     .step-item:hover {
         border: 1px solid rgba(52, 211, 153, 0.5);
         background: rgba(255, 255, 255, 0.05);
@@ -123,7 +119,6 @@
       transform: translateX(-50%);
       width: 90%;
       max-width: 440px;
-      /* Futuristic Neon Button */
       background: linear-gradient(135deg, #059669 0%, #10b981 100%);
       color: #fff;
       padding: 18px; 
@@ -233,11 +228,6 @@
   </footer>
 
 <script>
-    const users = ["@imani_nicole94", "@iam_deshawn_", "@latoya_the_stylist", "@marquis_j92", "@_tanisha.renee_", "@dontaevon_cuts", "@iam_khadijah_", "@kiara_monet88", "@deandre_williams_", "@shonda_lynn_", "@zaria_renee2", "@its_brianna_j", "@ashanti_love_", "@tyrese_the_great", "@nia_marie_official"];
-    
-    function getRandomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
-
-   <script>
     // 1. Define the users
     const users = ["@imani_nicole94", "@iam_deshawn_", "@latoya_the_stylist", "@marquis_j92", "@_tanisha.renee_", "@dontaevon_cuts", "@iam_khadijah_", "@kiara_monet88", "@deandre_williams_", "@shonda_lynn_", "@zaria_renee2", "@its_brianna_j", "@ashanti_love_", "@tyrese_the_great", "@nia_marie_official"];
     
@@ -262,7 +252,7 @@
       const user = users[Math.floor(Math.random() * users.length)];
       const amount = getRandomInt(150, 850);
       const minutesAgo = getRandomInt(1, 12);
-      const currentDay = getESTDay(); // Dynamically gets the day
+      const currentDay = getESTDay();
 
       textContainer.innerHTML = `
         <strong style="color:#fff;">${user}</strong> received 
@@ -272,23 +262,19 @@
       
       toast.classList.add('show');
       
-      // Hide the toast after 4.5 seconds
       setTimeout(() => { 
         toast.classList.remove('show'); 
       }, 4500);
     }
 
-    // 5. Initialize the cycle
+    // 5. Initialize
     window.addEventListener('load', function() {
-      // Show the first toast 2.5 seconds after page load
       setTimeout(() => { 
         showToast(); 
-        // Then repeat every 10 seconds
         setInterval(showToast, 10000); 
       }, 2500);
     });
-</script>
-<script>
+
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
