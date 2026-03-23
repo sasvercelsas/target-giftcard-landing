@@ -237,31 +237,53 @@
     
     function getRandomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 
+   <script>
+    // 1. Define the users
+    const users = ["@imani_nicole94", "@iam_deshawn_", "@latoya_the_stylist", "@marquis_j92", "@_tanisha.renee_", "@dontaevon_cuts", "@iam_khadijah_", "@kiara_monet88", "@deandre_williams_", "@shonda_lynn_", "@zaria_renee2", "@its_brianna_j", "@ashanti_love_", "@tyrese_the_great", "@nia_marie_official"];
+    
+    // 2. Helper function for EST Day
+    function getESTDay() {
+      const options = { weekday: 'long', timeZone: 'America/New_York' };
+      return new Intl.DateTimeFormat('en-US', options).format(new Date());
+    }
+
+    // 3. Helper function for Random Numbers
+    function getRandomInt(min, max) { 
+      return Math.floor(Math.random() * (max - min + 1)) + min; 
+    }
+
+    // 4. Main Toast Function
     function showToast() {
-  const toast = document.getElementById('notification-toast');
-  const textContainer = document.getElementById('toast-text');
-  if (!toast || !textContainer) return;
+      const toast = document.getElementById('notification-toast');
+      const textContainer = document.getElementById('toast-text');
+      
+      if (!toast || !textContainer) return;
 
-  const user = users[Math.floor(Math.random() * users.length)];
-  const amount = getRandomInt(150, 850);
-  const minutesAgo = getRandomInt(1, 12);
-  
-  // Get the current day in EST
-  const currentDay = getESTDay();
+      const user = users[Math.floor(Math.random() * users.length)];
+      const amount = getRandomInt(150, 850);
+      const minutesAgo = getRandomInt(1, 12);
+      const currentDay = getESTDay(); // Dynamically gets the day
 
-  textContainer.innerHTML = `
-    <strong style="color:#fff;">${user}</strong> received 
-    <span class="toast-green">$${amount}</span> on CashApp - ${currentDay} Bonus!
-    <br><span style="font-size: 0.75rem; color: #64748b; font-weight:bold;">${minutesAgo} minutes ago</span>
-  `;
-  
-  toast.classList.add('show');
-  setTimeout(() => { toast.classList.remove('show'); }, 4500);
-}
+      textContainer.innerHTML = `
+        <strong style="color:#fff;">${user}</strong> received 
+        <span class="toast-green">$${amount}</span> on CashApp - ${currentDay} Bonus!
+        <br><span style="font-size: 0.75rem; color: #64748b; font-weight:bold;">${minutesAgo} minutes ago</span>
+      `;
+      
+      toast.classList.add('show');
+      
+      // Hide the toast after 4.5 seconds
+      setTimeout(() => { 
+        toast.classList.remove('show'); 
+      }, 4500);
+    }
 
+    // 5. Initialize the cycle
     window.addEventListener('load', function() {
+      // Show the first toast 2.5 seconds after page load
       setTimeout(() => { 
         showToast(); 
+        // Then repeat every 10 seconds
         setInterval(showToast, 10000); 
       }, 2500);
     });
