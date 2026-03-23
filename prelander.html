@@ -238,23 +238,26 @@
     function getRandomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 
     function showToast() {
-      const toast = document.getElementById('notification-toast');
-      const textContainer = document.getElementById('toast-text');
-      if (!toast || !textContainer) return;
+  const toast = document.getElementById('notification-toast');
+  const textContainer = document.getElementById('toast-text');
+  if (!toast || !textContainer) return;
 
-      const user = users[Math.floor(Math.random() * users.length)];
-      const amount = getRandomInt(150, 850);
-      const minutesAgo = getRandomInt(1, 12);
+  const user = users[Math.floor(Math.random() * users.length)];
+  const amount = getRandomInt(150, 850);
+  const minutesAgo = getRandomInt(1, 12);
+  
+  // Get the current day in EST
+  const currentDay = getESTDay();
 
-      textContainer.innerHTML = `
-        <strong style="color:#fff;">${user}</strong> received 
-        <span class="toast-green">$${amount}</span> on CashApp - Thursday Bonus!
-        <br><span style="font-size: 0.75rem; color: #64748b; font-weight:bold;">${minutesAgo} minutes ago</span>
-      `;
-      
-      toast.classList.add('show');
-      setTimeout(() => { toast.classList.remove('show'); }, 4500);
-    }
+  textContainer.innerHTML = `
+    <strong style="color:#fff;">${user}</strong> received 
+    <span class="toast-green">$${amount}</span> on CashApp - ${currentDay} Bonus!
+    <br><span style="font-size: 0.75rem; color: #64748b; font-weight:bold;">${minutesAgo} minutes ago</span>
+  `;
+  
+  toast.classList.add('show');
+  setTimeout(() => { toast.classList.remove('show'); }, 4500);
+}
 
     window.addEventListener('load', function() {
       setTimeout(() => { 
